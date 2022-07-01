@@ -10,87 +10,87 @@ using p5WebApi.Models;
 
 namespace p5WebApi.Controllers
 {
-    public class StudentModelsController : Controller
+    public class studentsController : Controller
     {
         private readonly p5WebApiContext _context;
 
-        public StudentModelsController(p5WebApiContext context)
+        public studentsController(p5WebApiContext context)
         {
             _context = context;
         }
 
-        // GET: StudentModels
+        // GET: students
         public async Task<IActionResult> Index()
         {
-              return _context.StudentModel != null ? 
-                          View(await _context.StudentModel.ToListAsync()) :
-                          Problem("Entity set 'p5WebApiContext.StudentModel'  is null.");
+              return _context.student != null ? 
+                          View(await _context.student.ToListAsync()) :
+                          Problem("Entity set 'p5WebApiContext.student'  is null.");
         }
 
-        // GET: StudentModels/Details/5
+        // GET: students/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.StudentModel == null)
+            if (id == null || _context.student == null)
             {
                 return NotFound();
             }
 
-            var studentModel = await _context.StudentModel
-                .FirstOrDefaultAsync(m => m.idStudent == id);
-            if (studentModel == null)
+            var student = await _context.student
+                .FirstOrDefaultAsync(m => m.StudentId == id);
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return View(studentModel);
+            return View(student);
         }
 
-        // GET: StudentModels/Create
+        // GET: students/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: StudentModels/Create
+        // POST: students/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idStudent,FirstName,LastName,Address,Postal,Phone")] StudentModel studentModel)
+        public async Task<IActionResult> Create([Bind("StudentId,FirstName,LastName,Address,Postal,Phone")] student student)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(studentModel);
+                _context.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(studentModel);
+            return View(student);
         }
 
-        // GET: StudentModels/Edit/5
+        // GET: students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.StudentModel == null)
+            if (id == null || _context.student == null)
             {
                 return NotFound();
             }
 
-            var studentModel = await _context.StudentModel.FindAsync(id);
-            if (studentModel == null)
+            var student = await _context.student.FindAsync(id);
+            if (student == null)
             {
                 return NotFound();
             }
-            return View(studentModel);
+            return View(student);
         }
 
-        // POST: StudentModels/Edit/5
+        // POST: students/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idStudent,FirstName,LastName,Address,Postal,Phone")] StudentModel studentModel)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentId,FirstName,LastName,Address,Postal,Phone")] student student)
         {
-            if (id != studentModel.idStudent)
+            if (id != student.StudentId)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace p5WebApi.Controllers
             {
                 try
                 {
-                    _context.Update(studentModel);
+                    _context.Update(student);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentModelExists(studentModel.idStudent))
+                    if (!studentExists(student.StudentId))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace p5WebApi.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(studentModel);
+            return View(student);
         }
 
-        // GET: StudentModels/Delete/5
+        // GET: students/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.StudentModel == null)
+            if (id == null || _context.student == null)
             {
                 return NotFound();
             }
 
-            var studentModel = await _context.StudentModel
-                .FirstOrDefaultAsync(m => m.idStudent == id);
-            if (studentModel == null)
+            var student = await _context.student
+                .FirstOrDefaultAsync(m => m.StudentId == id);
+            if (student == null)
             {
                 return NotFound();
             }
 
-            return View(studentModel);
+            return View(student);
         }
 
-        // POST: StudentModels/Delete/5
+        // POST: students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.StudentModel == null)
+            if (_context.student == null)
             {
-                return Problem("Entity set 'p5WebApiContext.StudentModel'  is null.");
+                return Problem("Entity set 'p5WebApiContext.student'  is null.");
             }
-            var studentModel = await _context.StudentModel.FindAsync(id);
-            if (studentModel != null)
+            var student = await _context.student.FindAsync(id);
+            if (student != null)
             {
-                _context.StudentModel.Remove(studentModel);
+                _context.student.Remove(student);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentModelExists(int id)
+        private bool studentExists(int id)
         {
-          return (_context.StudentModel?.Any(e => e.idStudent == id)).GetValueOrDefault();
+          return (_context.student?.Any(e => e.StudentId == id)).GetValueOrDefault();
         }
     }
 }

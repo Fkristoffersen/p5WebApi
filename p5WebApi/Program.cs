@@ -6,6 +6,31 @@ var connectionString = builder.Configuration.GetConnectionString("p5WebApiContex
 builder.Services.AddDbContext<p5WebApiContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins"; //
+
+builder.Services.AddCors(options => 
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000/",
+                                              "http://localhost:3001/");
+                      });
+});//
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -24,6 +49,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+
+app.UseCors(MyAllowSpecificOrigins); //
+
+
+
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -31,3 +62,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

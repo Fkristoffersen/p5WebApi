@@ -14,6 +14,6 @@ namespace p5WebApi.Data
         {
         }
 
-        public DbSet<p5WebApi.Models.StudentModel>? StudentModel { get; set; }
+        public DbSet<p5WebApi.Models.student>? student { get; set; }
     }
 }
