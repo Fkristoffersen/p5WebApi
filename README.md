@@ -1,4 +1,6 @@
-<div align="center" id="top"> 
+# Markdown heading
+allowed_elements
+<div align="center" id="top">
   <img src="./.github/app.gif" alt="Mysql" />
 
   &#xa0;
@@ -62,6 +64,27 @@ The following tools were used in this Sample:
 
 - [MySQL](https://www.mysql.com/)
 - [VSCode](https://code.visualstudio.com/)
+- [Andromeda]
+- [Auto_Rename_Tag]
+- [Awesome_Flutter_Snippets]
+- [Better_Comments]
+- [Block_Comments]
+- [Colorful_Comments]
+- [Fix_VSCode_Checksums]
+- [GitHub_Repositories]
+- [GitLens]
+- [Highlight_Matching_Tag]
+- [ini-format]
+- [markdownlint]
+- [material_Icon_Theme]
+- [Notes]
+- [Oracle_Developer_Tools]
+- [Paste_JSON]
+- [Prettier]
+- [Remote_Repositories]
+- [Simple_Readme]
+- [TabsColor]
+-
 
 ## :white_check_mark: Requirements ##
 

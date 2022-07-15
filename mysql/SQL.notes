@@ -1,0 +1,57 @@
+[2022-07-15]
+
+SQL 3NF Questions:
+
+    1.       *Could there could be multiple addresses per user?*
+    2.       *Is an address optional or mandatory?*
+    3.       *Does the information in City, Country, Region duplicate that in Address?*
+    4.       *Could a user have multiple TelNos?*
+    5.       *Is a TelNo optional or mandatory?*
+    6.       *Could a user have multiple MobNos?*
+    7.       *Is a MobNo optional or mandatory?*
+    8.       *Could a user have multiple Emails?*
+    9.       *Is an Email optional or mandatory?*
+    10.      *Is NoOfMembers calculated from the count of users?*
+    11.      *Can there be more than one UserAttempts?*
+    12.      *Can there be more than one BlockTime per user?*
+
+Auto-generated School group names:
+"Auto-generated sequence for a class name, forexample 1A22, 1B22 and 1C22."
+"next year they will be called 1A23, 1B23 and 1C23."
+"Higher classes should be called forexample 2A22, 2B22 and 2B22"
+
+Reason:
+"Students have access to information about their class and grades."
+"students should not have access to other classes that they are not added into."
+"New students should automatically join a class without someone manually adding them or creating new groups"
+
+Auto-generated sequence:
+""
+
+[mysql]
+
+CREATE FUNCTION Group_Name (@id int)
+return char(5)
+AS
+BEGIN @id + 
+[end]
+
+1A22,1B23,1C23
+1A23,1B23,1C23
+
+2A22,2B22,2C22
+2A22,2B22,2C22
+
+
+3A,3B,3C
+
+4A,4B,4C
+
+5A,5B,5C
+
+Self add students to a group?
+
+
+
+
+

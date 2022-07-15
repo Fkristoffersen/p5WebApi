@@ -42,32 +42,36 @@ USE udataplus;
 
   CREATE TABLE IF NOT EXISTS group (
     GroupId INT NOT NULL AUTO_INCREMENT,
+    Name VARCHAR(60) NOT NULL DEFAULT 'A'
+
     
   )
 
 
-INSERT INTO student (FirstName,LastName,Address,Postal,Phone)
-VALUES ('Amanda','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-		('Carls','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Andersen','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Bob','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Enrik','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Bingus','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Luan','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Dona','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482');
 
-INSERT INTO teacher (FirstName,LastName,Address,Postal,Phone)
-VALUES ('Bo','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-		('John','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Pelle','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Jack','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Nicolaj','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Ricardo','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Steve','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482'),
-        ('Rekt','Nicolinelsen','305 - 14th Ave. S. Suite 3B', '2700', '81946482');
+INSERT INTO user (FirstName,LastName,Email,Password,Role)
+VALUES ('Amanda','Nicolinelsen','Demo@gmail.com', 'Passw0rd', 'Student'),
+		('Carls','Nicolinelsen','Demo@gmail.com', 'Passw0rd', 'Student'),
+        ('Andersen','Nicolinelsen','Demo@gmail.com', 'Passw0rd', 'Student'),
+        ('Bob','Nicolinelsen','Demo@gmail.com', 'Passw0rd', 'Student'),
+        ('Enrik','Nicolinelsen','Demo@gmail.com', 'Passw0rd', 'Student'),
+        ('Bingus','Nicolinelsen','Demo@gmail.com', 'Passw0rd', 'Student'),
+        ('Luan','Nicolinelsen','Demo@gmail.com', 'Passw0rd', 'Student'),
+        ('Dona','Nicolinelsen','Demo@gmail.com', 'Passw0rd', 'Student');
 
+INSERT INTO group (Name)
+VALUES ('H1A'),
+		('H1B'),
+        ('Student'),
+        ('Student'),
+        ('Student'),
+        ('Student'),
+        ('Student'),
+        ('Student');
+SERT ON group
+FOR EACH ROW BEGIN
+    UPDATE group SET Name = xx + RIGHT('..') 
 
-DELIMITER $$
 -- *=================================================================
 -- ? Procedure: FindAll 
 -- * Parameters: NONE 
